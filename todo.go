@@ -46,7 +46,7 @@ func (l *List) Complete(i int) error {
 func (l *List) Delete(i int) error {
 	ls := *l
 	if i <= 0 || i > len(ls) {
-		return fmt.Errorf("Itme %d does not exist", i)
+		return fmt.Errorf("Item %d does not exist", i)
 	}
 	*l = append(ls[:i-1], ls[i:]...)
 	return nil
@@ -63,7 +63,7 @@ func (l *List) Save(filename string) error {
 }
 
 // Get method opens the provided file name, decodes
-// the JSON adata and parses it into a List
+// the JSON data and parses it into a List
 func (l *List) Get(filename string) error {
 	file, err := os.ReadFile(filename)
 	if err != nil {
@@ -88,7 +88,7 @@ func (l *List) String() string {
 		if t.Done {
 			prefix = "X "
 		}
-		// Adjust the item nuber k to print number starting from 1 instead of 0
+		// Adjust the item number k to print number starting from 1 instead of 0
 		formatted += fmt.Sprintf("%s%d: %s\n", prefix, k+1, t.Task)
 	}
 	return formatted
